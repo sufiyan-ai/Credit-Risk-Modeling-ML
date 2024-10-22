@@ -4,7 +4,7 @@
 This project focuses on building a robust Credit Risk Prediction model, identifying individuals based on different approval flags (`P1`, `P2`, `P3`, `P4`). The project involves extensive data preprocessing, model fitting, and hyperparameter tuning using **Random Forest**, **XGBoost**, and **Decision Trees**. The best results were obtained using XGBoost, fine-tuned with grid search and hyperparameter optimization.
 
 ## Project Overview
-The main goal of this project is to predict credit risk using a classification model, employing several machine learning techniques. The steps include:
+This **Credit Risk Modeling** project leverages machine learning to predict the probability of loan approval or default based on customer data, including financial and behavioral variables. By applying algorithms such as XGBoost, Random Forest, and Decision Trees, the model identifies patterns in historical data to provide accurate risk assessments. The solution supports financial institutions in making informed lending decisions, reducing the risk of defaults, and improving overall credit portfolio management.
 
 1. **Data Preprocessing Pipeline**
    - Data Cleaning
