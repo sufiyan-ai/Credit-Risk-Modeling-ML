@@ -3,8 +3,6 @@
 
 This project focuses on building a robust Credit Risk Prediction model, identifying individuals based on different approval flags (`P1`, `P2`, `P3`, `P4`). The project involves extensive data preprocessing, model fitting, and hyperparameter tuning using **Random Forest**, **XGBoost**, and **Decision Trees**. The best results were obtained using XGBoost, fine-tuned with grid search and hyperparameter optimization.
 
-# I am still working on the deployment of this project, where I will give user an interface to upload 2 excel files & return their predictions, where I'll use Flask for Web App
-
 ## Project Overview
 The main goal of this project is to predict credit risk using a classification model, employing several machine learning techniques. The steps include:
 
@@ -42,6 +40,33 @@ The data pipeline includes the following key steps:
 - **Feature Encoding**: Applied OneHot encoding for categorical variables and ordinal encoding for educational levels.
 - **Scaling**: Standardized numerical features that significantly impacted the model's performance.
 
+## Hyperparameter Tuning for XGBoost
+
+To optimize XGBoost, I performed a comprehensive grid search across the following parameters:
+
+- **n_estimators**: [50, 100, 200]
+- **max_depth**: [3, 5, 7]
+- **learning_rate**: [0.01, 0.1, 0.2]
+
+The final model was trained with the best parameters found via grid search.
+
 ```python
-# Sample code for preprocessing
-df_encoded = data_preprocessing_pipeline(a1_path, a2_path)
+from sklearn.model_selection import GridSearchCV
+
+# Define the XGBClassifier and parameter grid
+xgb_model = xgb.XGBClassifier(objective='multi:softmax', num_class=4)
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1, 0.2],
+}
+
+# Perform Grid Search with cross-validation
+grid_search = GridSearchCV(estimator=xgb_model, param_grid=param_grid, cv=3)
+grid_search.fit(x_train, y_train)
+
+# Output the best hyperparameters
+print("Best Hyperparameters:", grid_search.best_params_)
+```
+## I am still working on the deployment of this project, where I will give user an interface to upload 2 excel files & return their predictions, where I'll use Flask for Web App
+
